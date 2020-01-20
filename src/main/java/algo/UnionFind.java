@@ -1,7 +1,5 @@
 package algo;
 
-import scala.io.StdIn;
-
 import java.util.Scanner;
 
 public class UnionFind {
@@ -48,17 +46,18 @@ public class UnionFind {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int p, q ;
-        UnionFind uf = new UnionFind(n) ;
-        System.out.println("size " + n);
-        while(n-- > 0) {
-            p = sc.nextInt() ;
-            q = sc.nextInt() ;
+        int n, p, q;
 
-            if(uf.connected(p, q)) continue;
-            System.out.println("n!!!!!!!!!!!!!!1" + n);
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+
+        UnionFind uf = new UnionFind(n);
+
+        while (n-- > 0) {
+            p = sc.nextInt();
+            q = sc.nextInt();
+
+            if (uf.connected(p, q)) continue;
             uf.union(p, q);
 
             System.out.println("Combined Components: " + p + " " + q);
@@ -66,4 +65,5 @@ public class UnionFind {
 
         System.out.println("Connected Components: " + uf.getCount());
     }
+
 }
