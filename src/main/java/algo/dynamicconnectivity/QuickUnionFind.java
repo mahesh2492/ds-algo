@@ -5,11 +5,11 @@ import java.util.Scanner;
 /*
  Better than Quick Find but still for large tree it is not efficient too.
  */
-public class QuickUnion {
+public class QuickUnionFind {
     private int[] id;
     private int count;
 
-    public QuickUnion(int n) {
+    public QuickUnionFind(int n) {
         count = n;
         id = new int[n];
         for (int i = 0; i < n; i++) {
@@ -50,7 +50,7 @@ public class QuickUnion {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
 
-        QuickUnion qu = new QuickUnion(n);
+        QuickUnionFind qu = new QuickUnionFind(n);
 
         while (n-- > 0) {
             p = sc.nextInt();
