@@ -2,6 +2,10 @@ package algo;
 
 import java.util.Scanner;
 
+/*
+Time complexity: N * N
+Not good for large values.
+ */
 public class UnionFind {
 
     private int[] id;
