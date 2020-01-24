@@ -1,5 +1,7 @@
 package ds;
 
+import java.sql.SQLOutput;
+
 public class LinkedList {
     Node head;
 
@@ -59,27 +61,81 @@ public class LinkedList {
 
     }
 
+    //delete node at given position
+    Node deleteNode(Node head, int position) {
+        Node currentNode = head, prev = null;
+        int counter = 0 ;
+
+        if(currentNode != null && counter == position) {
+            head = head.next;
+            return head;
+        }
+
+        while (currentNode != null && counter != position) {
+            prev = currentNode;
+            counter++;
+            currentNode = currentNode.next;
+        }
+
+        if(currentNode == null) return head;
+
+        prev.next = currentNode.next;
+
+        return head;
+    }
+
+    Node delete(Node root , int postion) {
+        if(postion == 1){
+            return root.next ;
+        } else {
+            root.next = delete(root.next , postion-1);
+            return  root;
+        }
+    }
+    //using recursion
+    Node deleteNode2(Node root , int position) {
+        return delete(root,position);
+
+    }
+
+    public int getCount(Node head){
+        Node current = head ;
+        int len = 0;
+        while(current != null) {
+            len++;
+            current = current.next;
+        }
+
+        return len;
+    }
+
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        list.head = new Node(1);
+        LinkedList ll = new LinkedList();
+        ll.head = new Node(1);
         Node second = new Node(2);
         Node third = new Node(3);
 
-        list.head.next = second;
+        ll.head.next = second;
         second.next = third;
 
-        list.display(list.head);
-        list.insertAtBeginning(0);
+        ll.display(ll.head);
+        ll.insertAtBeginning(0);
         System.out.println("List after adding element in beginning!");
-        list.display(list.head);
+        ll.display(ll.head);
 
-        list.insertAtEnd(5);
+        ll.insertAtEnd(5);
         System.out.println("List after adding element in end!");
-        list.display(list.head);
+        ll.display(ll.head);
 
-        list.insertAfter(list.head.next.next.next, 4);
+        ll.insertAfter(ll.head.next.next.next, 4);
         System.out.println("List after adding element after given previous node!");
-        list.display(list.head);
+        ll.display(ll.head);
+
+      //  ll.deleteNode(ll.head, 0);
+        System.out.println("List after deleting given element!");
+        ll.display(ll.deleteNode(ll.head, 4));
+
+        System.out.println(ll.getCount(ll.head));
     }
 
 }
