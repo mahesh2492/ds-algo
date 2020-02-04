@@ -1,7 +1,5 @@
 package ds;
 
-import java.sql.SQLOutput;
-
 public class LinkedList {
     Node head;
 
@@ -92,6 +90,7 @@ public class LinkedList {
             return  root;
         }
     }
+
     //using recursion
     Node deleteNode2(Node root , int position) {
         return delete(root,position);
@@ -109,6 +108,13 @@ public class LinkedList {
         return len;
     }
 
+    //display elements using recursion
+    public void displayRecur(Node head) {
+        if(head == null) return;
+        System.out.print(head.data + " ");
+        displayRecur(head.next);
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.head = new Node(1);
@@ -119,22 +125,27 @@ public class LinkedList {
         second.next = third;
 
         ll.display(ll.head);
+        ll.displayRecur(ll.head);
         ll.insertAtBeginning(0);
         System.out.println("List after adding element in beginning!");
         ll.display(ll.head);
+        System.out.println("List after adding element in beginning using recur!");
+        ll.displayRecur(ll.head);
+        System.out.println();
 
         ll.insertAtEnd(5);
         System.out.println("List after adding element in end!");
-        ll.display(ll.head);
+        ll.displayRecur(ll.head);
 
+        System.out.println();
         ll.insertAfter(ll.head.next.next.next, 4);
         System.out.println("List after adding element after given previous node!");
         ll.display(ll.head);
 
-      //  ll.deleteNode(ll.head, 0);
         System.out.println("List after deleting given element!");
-        ll.display(ll.deleteNode(ll.head, 4));
+        ll.displayRecur(ll.deleteNode(ll.head, 4));
 
+        System.out.println();
         System.out.println(ll.getCount(ll.head));
     }
 
