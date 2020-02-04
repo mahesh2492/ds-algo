@@ -9,7 +9,7 @@ public class MonkWelcomeProblem {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t, k;
+        int t;
         t = sc.nextInt();
         int[] a1, a2, a3;
 
