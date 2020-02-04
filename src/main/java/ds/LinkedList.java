@@ -115,6 +115,20 @@ public class LinkedList {
         displayRecur(head.next);
     }
 
+    //using iterative way
+    public Node reverseList(Node head) {
+        Node nextNode, prev = null ;
+
+        while (head != null) {
+            nextNode = head.next;
+            head.next = prev;
+            prev = head;
+            head = nextNode;
+        }
+
+        return prev;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.head = new Node(1);
@@ -147,6 +161,9 @@ public class LinkedList {
 
         System.out.println();
         System.out.println(ll.getCount(ll.head));
+
+        System.out.println("Reverse the given list");
+        ll.displayRecur(ll.reverseList(ll.head));
     }
 
 }
