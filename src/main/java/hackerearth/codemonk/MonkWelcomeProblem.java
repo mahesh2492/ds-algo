@@ -1,4 +1,4 @@
-package hackerearth.array;
+package hackerearth.codemonk;
 
 import java.util.Scanner;
 
