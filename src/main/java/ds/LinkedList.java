@@ -1,7 +1,7 @@
 package ds;
 
 public class LinkedList {
-    Node head;
+    static Node head;
 
     static class Node {
         int data;
@@ -129,41 +129,61 @@ public class LinkedList {
         return prev;
     }
 
+    public Node recursiveReverse(Node current, Node prev) {
+        if(current == null) {
+            return null;
+        }
+
+        if(current.next == null) {
+            head = current;
+            current.next = prev;
+            return head;
+        }
+
+        Node currentNext = current.next;
+        current.next = prev;
+
+        recursiveReverse(currentNext, current);
+       return head;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.head = new Node(1);
+        head = new Node(1);
         Node second = new Node(2);
         Node third = new Node(3);
 
-        ll.head.next = second;
+        head.next = second;
         second.next = third;
 
-        ll.display(ll.head);
-        ll.displayRecur(ll.head);
+        ll.display(head);
+        ll.displayRecur(head);
         ll.insertAtBeginning(0);
         System.out.println("List after adding element in beginning!");
-        ll.display(ll.head);
+        ll.display(head);
         System.out.println("List after adding element in beginning using recur!");
-        ll.displayRecur(ll.head);
+        ll.displayRecur(head);
         System.out.println();
 
         ll.insertAtEnd(5);
         System.out.println("List after adding element in end!");
-        ll.displayRecur(ll.head);
+        ll.displayRecur(head);
 
         System.out.println();
-        ll.insertAfter(ll.head.next.next.next, 4);
+        ll.insertAfter(head.next.next.next, 4);
         System.out.println("List after adding element after given previous node!");
-        ll.display(ll.head);
+        ll.display(head);
 
         System.out.println("List after deleting given element!");
-        ll.displayRecur(ll.deleteNode(ll.head, 4));
+        ll.displayRecur(ll.deleteNode(head, 4));
 
         System.out.println();
-        System.out.println(ll.getCount(ll.head));
+        System.out.println(ll.getCount(head));
 
         System.out.println("Reverse the given list");
-        ll.displayRecur(ll.reverseList(ll.head));
+        //ll.displayRecur(ll.reverseList(ll.head));
+
+        ll.displayRecur(ll.recursiveReverse(head, null));
     }
 
 }
