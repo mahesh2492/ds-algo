@@ -181,8 +181,6 @@ public class LinkedList {
         System.out.println(ll.getCount(head));
 
         System.out.println("Reverse the given list");
-        //ll.displayRecur(ll.reverseList(ll.head));
-
         ll.displayRecur(ll.recursiveReverse(head, null));
     }
 
