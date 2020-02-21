@@ -122,11 +122,6 @@ public class DoublyLinkedList {
             throw new IllegalArgumentException("Can't delete as position must be greater than 0 or must be less or equal to " + length(current));
         }
 
-        if (current != null && counter == position) {
-            head = head.next;
-            return head;
-        }
-
         while (current != null && counter != position) {
             counter++;
             current = current.next;
@@ -160,6 +155,19 @@ public class DoublyLinkedList {
         }
     }
 
+    Node reverse(Node current) {
+        Node newHead = null, prev;
+
+        while (current != null) {
+            prev = current.prev;
+            current.prev = current.next;
+            current.next = prev;
+            newHead = current;
+            current = current.prev;
+        }
+        return newHead;
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
 
@@ -177,14 +185,16 @@ public class DoublyLinkedList {
         dll.display(head);
 
         System.out.println("List after insertions at given pos");
-        dll.insertAtPos(5, 5);
+        dll.insertAtPos(3, 5);
         dll.display(head);
         dll.insertAtPos(8, 8);
         dll.display(head);
 
 
-        System.out.println("List after deletion");
+        System.out.println("reversing it");
+        dll.display(dll.reverse(head));
+    /*    System.out.println("List after deletion");
         dll.delete(head,15);
-        dll.display(head);
+        dll.display(head);*/
     }
 }
