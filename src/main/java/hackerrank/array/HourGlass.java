@@ -3,7 +3,7 @@ package hackerrank.array;
 /*
 https://www.hackerrank.com/challenges/2d-array/problem
  */
-public class TwoDArray {
+public class HourGlass {
 
     static int hourglassSum(int[][] arr) {
         int max = Integer.MIN_VALUE;
