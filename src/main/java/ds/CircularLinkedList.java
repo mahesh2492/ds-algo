@@ -22,6 +22,7 @@ public class CircularLinkedList {
             current = current.next;
         }
 
+        System.out.println();
     }
 
     public void insertAtEnd(int data) {
@@ -59,6 +60,29 @@ public class CircularLinkedList {
         head = newNode;
     }
 
+    void deleteFromFront()  {
+        Node current, temp = head;
+
+        head = head.next;
+        current = head;
+
+        while(current.next != temp) {
+            current = current.next;
+        }
+
+        current.next = head;
+    }
+
+    void deleteFromEnd()  {
+        Node current = head;
+
+        while(current.next.next != head) {
+            current = current.next;
+        }
+
+        current.next = head;
+    }
+
     public static void main(String[] args) {
 
         CircularLinkedList cll = new CircularLinkedList();
@@ -71,7 +95,6 @@ public class CircularLinkedList {
         cll.insertAtBeginning( 1);
 
         cll.display(head);
-        System.out.println();
         System.out.println("Insertion at the end!!");
         cll.insertAtEnd( 6);
         cll.insertAtEnd( 7);
@@ -79,6 +102,12 @@ public class CircularLinkedList {
         cll.insertAtEnd( 9);
         cll.insertAtEnd( 10);
 
+        cll.display(head);
+
+        cll.deleteFromFront();
+        cll.display(head);
+
+        cll.deleteFromEnd();
         cll.display(head);
     }
 }
