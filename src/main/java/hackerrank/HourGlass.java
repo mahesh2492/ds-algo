@@ -1,4 +1,4 @@
-package hackerrank.array;
+package hackerrank;
 
 /*
 https://www.hackerrank.com/challenges/2d-array/problem
