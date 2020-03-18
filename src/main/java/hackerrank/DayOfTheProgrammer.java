@@ -17,26 +17,31 @@ public class DayOfTheProgrammer {
     }
 
     static String dayOfProgrammer(int year) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDate date = LocalDate.of(year, 1, 1);
+        int daysInFeb = 0;
 
         if (year < 1918) {
-            if (isLeapYear(year, "Julian")) {
-                return date.plusDays(254).format(formatter);
+            if (year % 4 == 0) {
+                daysInFeb = 29;
             } else {
-                return date.plusDays(255).format(formatter);
+                daysInFeb = 28;
             }
         } else if (year == 1918) {
-            return date.plusDays(268).format(formatter);
+            daysInFeb = 15;
         } else {
-            return date.plusDays(255).format(formatter);
+            if(year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+                daysInFeb = 29;
+            } else {
+                daysInFeb = 28;
+            }
         }
 
+       int day = 256 - (31 + daysInFeb + 31 + 30 + 31 + 30 + 31 + 31);
+       return String.format("%d.09.%d", day, year);
     }
 
     public static void main(String[] args) {
         System.out.println(dayOfProgrammer(1800));
-        System.out.println(dayOfProgrammer(1916));
+        System.out.println(dayOfProgrammer(1919));
     }
 
 }
