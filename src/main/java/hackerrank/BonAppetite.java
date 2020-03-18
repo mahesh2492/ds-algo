@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import static java.lang.Math.abs;
 
+/*
+https://www.hackerrank.com/challenges/bon-appetit/problem
+ */
 public class BonAppetite {
 
     static void bonAppetit(int[] bill, int k, int b) {
