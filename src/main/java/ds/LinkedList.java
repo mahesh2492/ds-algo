@@ -99,7 +99,7 @@ public class LinkedList {
 
     public int nthElementFromEnd(int n) {
        Node current = head;
-       int length = getCount(head), counter = 1;
+       int length = lengthOfList(head), counter = 1;
        assert length >= n;
        while(counter < (length - n + 1)) {
            ++counter;
@@ -109,7 +109,7 @@ public class LinkedList {
        return current.data;
     }
 
-    public int getCount(Node head) {
+    public int lengthOfList(Node head) {
         Node current = head;
         int len = 0;
         while (current != null) {
@@ -118,6 +118,29 @@ public class LinkedList {
         }
 
         return len;
+    }
+
+    public int getNthFromEnd(int n) {
+        Node nthNode = null, current = head;
+
+        for(int i = 1 ; i < n; ++i) {
+            if(current != null) {
+                current = current.next;
+            }
+        }
+
+       while (current != null) {
+           if(nthNode == null) {
+               nthNode = head;
+           } else {
+               nthNode = nthNode.next;
+           }
+
+           current = current.next;
+       }
+
+       assert nthNode != null;
+       return nthNode.data;
     }
 
     //display elements using recursion
@@ -214,7 +237,7 @@ public class LinkedList {
         ll.displayRecur(ll.deleteNode(head, 4));
 
         System.out.println();
-        System.out.println(ll.getCount(head));
+        System.out.println(ll.lengthOfList(head));
 
         ll.display(ll.insertInMid(head, 12));
 
@@ -223,8 +246,8 @@ public class LinkedList {
 
         System.out.println(ll.nthElementFromEnd(1));
         System.out.println(ll.nthElementFromEnd(2));
-        System.out.println(ll.nthElementFromEnd(3));
-        System.out.println(ll.nthElementFromEnd(4));
+        System.out.println(ll.getNthFromEnd(3));
+        System.out.println(ll.getNthFromEnd(4));
     }
 
 }
