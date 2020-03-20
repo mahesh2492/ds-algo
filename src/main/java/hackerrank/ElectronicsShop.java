@@ -1,5 +1,7 @@
 package hackerrank;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -9,13 +11,15 @@ public class ElectronicsShop {
 
     static int getMoneySpent(int[] keyboards, int[] drives, int b) {
         int amountSpend = -1;
-        for (int keyboard : keyboards) {
-            for (int drive : drives) {
-                int sum = keyboard + drive;
+
+        Arrays.sort(keyboards);
+        Arrays.sort(drives);
+
+        for (int i = keyboards.length - 1; i >=0 ; --i) {
+            for (int j = drives.length - 1; j >= 0; --j) {
+                int sum = keyboards[i] + drives[j];
                 if (sum <= b) {
-                    if (sum > amountSpend) {
-                        amountSpend = sum;
-                    }
+                    amountSpend = Math.max(amountSpend, sum);
 
                 }
             }
