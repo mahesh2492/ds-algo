@@ -97,6 +97,18 @@ public class LinkedList {
 
     }
 
+    public int nthElementFromEnd(int n) {
+       Node current = head;
+       int length = getCount(head), counter = 1;
+       assert length >= n;
+       while(counter < (length - n + 1)) {
+           ++counter;
+           current = current.next;
+       }
+
+       return current.data;
+    }
+
     public int getCount(Node head) {
         Node current = head;
         int len = 0;
@@ -206,9 +218,13 @@ public class LinkedList {
 
         ll.display(ll.insertInMid(head, 12));
 
-        System.out.println("Reverse the given list");
-        ll.displayRecur(ll.recursiveReverse(head, null));
+        /*System.out.println("Reverse the given list");
+        ll.displayRecur(ll.recursiveReverse(head, null));*/
 
+        System.out.println(ll.nthElementFromEnd(1));
+        System.out.println(ll.nthElementFromEnd(2));
+        System.out.println(ll.nthElementFromEnd(3));
+        System.out.println(ll.nthElementFromEnd(4));
     }
 
 }
