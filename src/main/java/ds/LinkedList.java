@@ -62,9 +62,9 @@ public class LinkedList {
     //delete node at given position
     Node deleteNode(Node head, int position) {
         Node currentNode = head, prev = null;
-        int counter = 0 ;
+        int counter = 0;
 
-        if(currentNode != null && counter == position) {
+        if (currentNode != null && counter == position) {
             head = head.next;
             return head;
         }
@@ -75,32 +75,32 @@ public class LinkedList {
             currentNode = currentNode.next;
         }
 
-        if(currentNode == null) return head;
+        if (currentNode == null) return head;
 
         prev.next = currentNode.next;
 
         return head;
     }
 
-    Node delete(Node root , int postion) {
-        if(postion == 1){
-            return root.next ;
+    Node delete(Node root, int postion) {
+        if (postion == 1) {
+            return root.next;
         } else {
-            root.next = delete(root.next , postion-1);
-            return  root;
+            root.next = delete(root.next, postion - 1);
+            return root;
         }
     }
 
     //using recursion
-    Node deleteNode2(Node root , int position) {
-        return delete(root,position);
+    Node deleteNode2(Node root, int position) {
+        return delete(root, position);
 
     }
 
-    public int getCount(Node head){
-        Node current = head ;
+    public int getCount(Node head) {
+        Node current = head;
         int len = 0;
-        while(current != null) {
+        while (current != null) {
             len++;
             current = current.next;
         }
@@ -110,14 +110,14 @@ public class LinkedList {
 
     //display elements using recursion
     public void displayRecur(Node head) {
-        if(head == null) return;
+        if (head == null) return;
         System.out.print(head.data + " ");
         displayRecur(head.next);
     }
 
     //using iterative way
     public Node reverseList(Node head) {
-        Node nextNode, prev = null ;
+        Node nextNode, prev = null;
 
         while (head != null) {
             nextNode = head.next;
@@ -130,11 +130,11 @@ public class LinkedList {
     }
 
     public Node recursiveReverse(Node current, Node prev) {
-        if(current == null) {
+        if (current == null) {
             return null;
         }
 
-        if(current.next == null) {
+        if (current.next == null) {
             head = current;
             current.next = prev;
             return head;
@@ -144,7 +144,31 @@ public class LinkedList {
         current.next = prev;
 
         recursiveReverse(currentNext, current);
-       return head;
+        return head;
+    }
+
+    public Node insertInMid(Node head, int data) {
+        Node temp = head;
+        Node newNode = new Node(data);
+        int length = 0, counter = 0;
+
+        while (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+
+        temp = head;
+
+        while ((temp != null) && (counter < Math.ceil(length >> 1))) {
+            temp = temp.next;
+            counter++;
+        }
+
+        assert temp != null;
+        newNode.next = temp.next;
+        temp.next = newNode;
+
+        return head;
     }
 
     public static void main(String[] args) {
@@ -180,8 +204,11 @@ public class LinkedList {
         System.out.println();
         System.out.println(ll.getCount(head));
 
+        ll.display(ll.insertInMid(head, 12));
+
         System.out.println("Reverse the given list");
         ll.displayRecur(ll.recursiveReverse(head, null));
+
     }
 
 }
