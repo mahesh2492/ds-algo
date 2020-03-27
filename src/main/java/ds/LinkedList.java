@@ -165,20 +165,12 @@ public class LinkedList {
     }
 
     public Node recursiveReverse(Node current, Node prev) {
-        if (current == null) {
-            return null;
-        }
-
-        if (current.next == null) {
-            head = current;
+        if(current != null) {
+            recursiveReverse(current.next, current);
             current.next = prev;
-            return head;
+        } else {
+            head = prev;
         }
-
-        Node currentNext = current.next;
-        current.next = prev;
-
-        recursiveReverse(currentNext, current);
         return head;
     }
 
@@ -241,9 +233,10 @@ public class LinkedList {
 
         ll.display(ll.insertInMid(head, 12));
 
-        /*System.out.println("Reverse the given list");
-        ll.displayRecur(ll.recursiveReverse(head, null));*/
+        System.out.println("Reverse the given list");
+        ll.displayRecur(ll.recursiveReverse(head, null));
 
+        System.out.println();
         System.out.println(ll.nthElementFromEnd(1));
         System.out.println(ll.nthElementFromEnd(2));
         System.out.println(ll.getNthFromEnd(3));
