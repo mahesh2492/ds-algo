@@ -5,19 +5,6 @@ https://www.hackerrank.com/challenges/reduced-string/problem
  */
 public class SuperReducedString {
 
-    static String foo(StringBuilder sb, int start, int end) {
-        if (sb.length() == 0) {
-            return "";
-        }
-
-        if (sb.charAt(0) == sb.charAt(1)) {
-            sb.deleteCharAt(0);
-            sb.deleteCharAt(1);
-            //foo(sb);
-        }
-        return null;
-    }
-
     static String superReducedString(String s) {
         StringBuilder sb = new StringBuilder(s);
         int i = 0;
