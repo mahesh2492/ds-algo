@@ -31,7 +31,6 @@ public class ACMICPCTeam {
 
     public static void main(String[] args) {
         String []str = {"10101", "11100", "11010", "00101"};
-      //  System.out.println(topicsCovered("10101", "11100"));
        for(int a: acmTeam(str)) {
            System.out.println(a);
        }
