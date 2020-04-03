@@ -2,8 +2,23 @@ package leetcode;
 
 import java.util.Scanner;
 
+/*
+https://leetcode.com/explore/featured/card/30-day-leetcoding-challenge/528/week-1/3284/
+ */
 public class HappyNumber {
+
+    static boolean search(int[] loop, int num) {
+        for (int value : loop) {
+            if (value == num) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static boolean isHappy(int n) {
+        int[] loop = {4, 16, 37, 58, 89, 145, 42, 20};
         int s = 0;
         while (n > 0) {
             int remainder = n % 10;
@@ -14,7 +29,11 @@ public class HappyNumber {
         if (s == 1) {
             return true;
         } else {
-            return isHappy(s);
+            if (search(loop, s)) {
+                return false;
+            } else {
+                return isHappy(s);
+            }
         }
     }
 

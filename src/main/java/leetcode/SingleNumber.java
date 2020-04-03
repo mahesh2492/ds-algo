@@ -26,6 +26,7 @@ public class SingleNumber {
             for(int i = 0; i < number; i++) {
                 numbers[i] = sc.nextInt();
             }
+
             System.out.println(singleNumber(numbers));
         }
     }
