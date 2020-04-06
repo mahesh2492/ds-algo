@@ -1,40 +1,40 @@
 package leetcode;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /*
 https://leetcode.com/explore/featured/card/30-day-leetcoding-challenge/528/week-1/3284/
  */
 public class HappyNumber {
 
-    static boolean search(int[] loop, int num) {
-        for (int value : loop) {
-            if (value == num) {
-                return true;
-            }
+    public static int findSquareOfDigits(int num) {
+        int sum = 0;
+        while (num > 0) {
+            int remainder = num % 10;
+            sum += remainder * remainder;
+            num = num / 10;
         }
 
-        return false;
+        return sum;
     }
 
     public static boolean isHappy(int n) {
-        int[] loop = {4, 16, 37, 58, 89, 145, 42, 20};
-        int s = 0;
-        while (n > 0) {
-            int remainder = n % 10;
-            s += remainder * remainder;
-            n = n / 10;
-        }
+        Set<Integer> isVisited = new HashSet<>();
 
-        if (s == 1) {
-            return true;
-        } else {
-            if (search(loop, s)) {
-                return false;
-            } else {
-                return isHappy(s);
+        for (int i = 1; i < 810; i++) {
+            if (n == 1) {
+                return true;
             }
+
+            n = findSquareOfDigits(n);
+            if (isVisited.contains(n)) {
+                return false;
+            }
+            isVisited.add(n);
         }
+        return false;
     }
 
     public static void main(String[] args) {
