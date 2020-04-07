@@ -46,6 +46,19 @@ public class Stack {
         System.out.println();
     }
 
+    public int getMax() {
+        Node current = head;
+        int max = 0;
+        while (current != null) {
+            if(max < current.data) {
+                max = current.data;
+            }
+
+            current = current.next;
+        }
+        return max;
+    }
+
     public static void main(String[] args) throws Exception {
         Stack stack = new Stack();
         stack.push(1);
@@ -55,7 +68,7 @@ public class Stack {
 
         stack.display(head);
         stack.pop();
-        stack.display(head);
+        System.out.println(stack.getMax());
 
     }
 }
