@@ -1,4 +1,4 @@
-package ds;
+package ds.stack;
 
 public class Stack {
     static Node head;
