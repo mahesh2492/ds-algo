@@ -1,7 +1,6 @@
 package hackerrank;
 
 import java.util.Scanner;
-import static java.lang.Math.pow;
 
 /*
 https://www.hackerrank.com/challenges/sum-vs-xor/problem
@@ -17,7 +16,7 @@ public class SumOfXor {
             }
             n = n / 2;
         }
-        return 1 << numberOfZeroes;
+        return 1L << numberOfZeroes;
     }
 
     public static void main(String[] args) {
