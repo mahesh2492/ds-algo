@@ -198,6 +198,48 @@ public class LinkedList {
         return head;
     }
 
+    public Node oddEvenList(Node head) {
+        Node odd = null, even = null, start = null, end = null, current = head ;
+
+        int counter = 1;
+        if(current == null || current.next == null) {
+            return current;
+        }
+
+        while(current != null) {
+            if(counter % 2 != 0) {
+                if(odd == null) {
+                    odd = current;
+                    start = odd;
+                }
+                else {
+                    odd.next = current;
+                    odd = odd.next;
+                }
+
+            } else {
+                if(even == null) {
+                    even = current;
+                    end = even;
+                }
+                else {
+                    even.next = current;
+                    even = even.next;
+                }
+
+            }
+
+            current = current.next;
+            counter = counter + 1;
+        }
+
+        assert even != null;
+        even.next = null;
+        odd.next = end;
+
+        return start;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         head = new Node(1);
@@ -233,14 +275,17 @@ public class LinkedList {
 
         ll.display(ll.insertInMid(head, 12));
 
-        System.out.println("Reverse the given list");
+        System.out.println(" ==================== ");
+        ll.display(ll.oddEvenList(head));
+
+        /*System.out.println("Reverse the given list");
         ll.displayRecur(ll.recursiveReverse(head, null));
 
         System.out.println();
         System.out.println(ll.nthElementFromEnd(1));
         System.out.println(ll.nthElementFromEnd(2));
         System.out.println(ll.getNthFromEnd(3));
-        System.out.println(ll.getNthFromEnd(4));
+        System.out.println(ll.getNthFromEnd(4));*/
     }
 
 }
