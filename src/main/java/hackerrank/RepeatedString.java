@@ -1,8 +1,6 @@
 package hackerrank;
 
-
 import java.util.Scanner;
-
 /*
 https://www.hackerrank.com/challenges/repeated-string/problem
  */
@@ -18,6 +16,7 @@ public class RepeatedString {
 
         return countA;
     }
+
     static long repeatedString(String input, long n) {
        long countA;
         int length = input.length();

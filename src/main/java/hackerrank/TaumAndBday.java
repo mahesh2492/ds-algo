@@ -6,24 +6,16 @@ import java.util.Scanner;
 https://www.hackerrank.com/challenges/taum-and-bday/editorial
  */
 public class TaumAndBday {
-    public static long taumBday(long b, long w, long bc, long wc, long z) {
-        if (wc == bc || ((bc >= z && bc > wc + z) && (wc >= z && wc > bc + z))) {
-            return b * bc + w * wc;
+    public static long taumBday(long black, long white, long bCost, long wCost, long conversionCost) {
+        if (bCost > wCost && wCost + conversionCost < bCost) {
+                return (black * (wCost + conversionCost) + white * wCost);
         }
 
-        if (bc > wc) {
-            if (wc + z > bc) {
-                return b * bc + w * wc;
-            } else {
-                return (b * (wc + z) + w * wc);
-            }
-        } else {
-            if (bc + z > wc) {
-                return (b * bc + w * wc);
-            } else {
-                return (b * bc + w * (bc + z));
-            }
+        if(wCost > bCost && bCost + conversionCost < wCost) {
+                return (black * bCost + white * (bCost + conversionCost));
         }
+
+        return (black * bCost + white * wCost);
     }
 
     public static void main(String[] args) {
