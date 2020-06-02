@@ -1,4 +1,4 @@
-package ds;
+package ds.queue;
 
 public class Queue {
 
