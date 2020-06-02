@@ -275,17 +275,16 @@ public class LinkedList {
 
         ll.display(ll.insertInMid(head, 12));
 
-        System.out.println(" ==================== ");
         ll.display(ll.oddEvenList(head));
 
-        /*System.out.println("Reverse the given list");
+        System.out.println("Reverse the given list");
         ll.displayRecur(ll.recursiveReverse(head, null));
 
         System.out.println();
         System.out.println(ll.nthElementFromEnd(1));
         System.out.println(ll.nthElementFromEnd(2));
         System.out.println(ll.getNthFromEnd(3));
-        System.out.println(ll.getNthFromEnd(4));*/
+        System.out.println(ll.getNthFromEnd(4));
     }
 
 }
