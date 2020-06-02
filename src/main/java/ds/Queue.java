@@ -2,7 +2,7 @@ package ds;
 
 public class Queue {
 
-    static Node head;
+    static Node head, rear;
 
     static class Node {
         int data;
@@ -26,7 +26,7 @@ public class Queue {
        while (current.next != null) {
            current = current.next;
        }
-
+        rear = newNode;
        current.next = newNode;
     }
 
@@ -41,7 +41,17 @@ public class Queue {
     }
 
     void delete() {
-      head = head.next;
+      if(head == null) {
+          throw new RuntimeException("Queue is empty!!");
+      }
+
+      if(head.next == null) {
+          head = null;
+          rear = null;
+      } else {
+          head = head.next;
+      }
+
     }
 
     int front() {
@@ -72,7 +82,7 @@ public class Queue {
         queue.insert(3);
         queue.insert(4);
 
-        System.out.println("Queue Front " + queue.front());
+        System.out.println("Queue Front " + queue.front() + " Rear " + rear.data);
         queue.display();
 
         queue.delete();
@@ -81,6 +91,9 @@ public class Queue {
         queue.delete();
         queue.display();
 
+        queue.delete();
+        queue.delete();
 
+        System.out.println("is Queue Empty again?: " + queue.isEmptyQueue());
     }
 }
