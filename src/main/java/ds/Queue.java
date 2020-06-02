@@ -14,7 +14,7 @@ public class Queue {
         }
     }
 
-    void insert(int data) {
+    void enqueue(int data) {
         Node newNode = new Node(data);
         if(head == null) {
            head = newNode;
@@ -40,7 +40,7 @@ public class Queue {
         System.out.println();
     }
 
-    void delete() {
+    void dequeue() {
       if(head == null) {
           throw new RuntimeException("Queue is empty!!");
       }
@@ -73,26 +73,39 @@ public class Queue {
         return head == null;
     }
 
+    void reverseQueue() {
+        if (head != null) {
+            int front = front();
+            dequeue();
+            reverseQueue();
+            enqueue(front);
+        }
+    }
+
     public static void main(String[] args) {
         Queue queue = new Queue();
 
         System.out.println("is Queue empty?: "+ queue.isEmptyQueue());
-        queue.insert(1);
-        queue.insert(2);
-        queue.insert(3);
-        queue.insert(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+
+        queue.display();
+        queue.reverseQueue();
+        queue.display();
 
         System.out.println("Queue Front " + queue.front() + " Rear " + rear.data);
         queue.display();
 
-        queue.delete();
+        queue.dequeue();
         queue.display();
         System.out.println("Queue size " + queue.queueSize());
-        queue.delete();
+        queue.dequeue();
         queue.display();
 
-        queue.delete();
-        queue.delete();
+        queue.dequeue();
+        queue.dequeue();
 
         System.out.println("is Queue Empty again?: " + queue.isEmptyQueue());
     }
