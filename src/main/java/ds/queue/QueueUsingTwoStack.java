@@ -1,7 +1,9 @@
 package ds.queue;
 
 import java.util.Stack;
-
+/*
+https://www.hackerrank.com/challenges/queue-using-two-stacks/problem
+ */
 public class QueueUsingTwoStack {
 
     private final Stack<Integer> first = new Stack<>();
@@ -34,16 +36,29 @@ public class QueueUsingTwoStack {
         return (first.isEmpty() && second.isEmpty());
     }
 
+    int front() {
+        if (second.isEmpty()) {
+            while (!first.isEmpty()){
+                second.push(first.pop());
+            }
+        }
+        return second.peek();
+    }
+
     public static void main(String[] args) {
         QueueUsingTwoStack queueUsingTwoStack = new QueueUsingTwoStack();
 
-        queueUsingTwoStack.enqueue(1);
-        queueUsingTwoStack.enqueue(2);
-        queueUsingTwoStack.enqueue(3);
+        queueUsingTwoStack.enqueue(76);
+        queueUsingTwoStack.enqueue(33);
+        System.out.println("Dequeue: " + queueUsingTwoStack.dequeue());
+        queueUsingTwoStack.enqueue(23);
+        queueUsingTwoStack.enqueue(97);
+        queueUsingTwoStack.enqueue(21);
+        System.out.println("Front: " + queueUsingTwoStack.front());
+        System.out.println("Queue " + queueUsingTwoStack.first);
 
-        System.out.println("Size of Queue: " + queueUsingTwoStack.size());
-        System.out.println(queueUsingTwoStack.dequeue());
-        System.out.println(queueUsingTwoStack.dequeue());
-        System.out.println(queueUsingTwoStack.dequeue());
+        System.out.println("Front: " + queueUsingTwoStack.front());
+        queueUsingTwoStack.enqueue(74);
+
     }
 }
