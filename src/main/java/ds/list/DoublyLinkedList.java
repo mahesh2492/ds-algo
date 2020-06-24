@@ -1,4 +1,4 @@
-package ds;
+package ds.list;
 
 public class DoublyLinkedList {
     static Node head;

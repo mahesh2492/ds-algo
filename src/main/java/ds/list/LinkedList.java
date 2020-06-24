@@ -1,4 +1,4 @@
-package ds;
+package ds.list;
 
 public class LinkedList {
     static Node head;
