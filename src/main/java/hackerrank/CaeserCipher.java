@@ -9,9 +9,7 @@ public class CaeserCipher {
     static String caesarCipher(String input, int shift) {
         StringBuilder sb = new StringBuilder();
 
-        if(shift > 26) {
-           shift = shift % 26;
-        }
+        shift = shift % 26;
 
         for(char ch: input.toCharArray()) {
              if(Character.isLetter(ch)) {
