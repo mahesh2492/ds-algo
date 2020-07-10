@@ -1,5 +1,8 @@
 package ds.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode {
     int data;
     TreeNode left, right;
@@ -69,9 +72,37 @@ public class BinarySearchTree {
         }
     }
 
+    void levelTraversal(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        if(root == null) {
+            System.out.println("Tree is empty!");
+            return;
+        }
+
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            TreeNode temp = queue.remove();
+            System.out.print(temp.data + " ");
+
+            if(temp.left != null)
+             queue.add(temp.left);
+
+            if(temp.right != null)
+                queue.add(temp.right);
+        }
+
+    }
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
 
+         /* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+        20   40  60   80
+        */
         bst.insert(50);
         bst.insert(30);
         bst.insert(20);
@@ -89,5 +120,7 @@ public class BinarySearchTree {
         System.out.print("\nPostorder Traversal of Bst: ");
         bst.postOrder(root);
 
+        System.out.print("\nLever Order Traversal of Bst: ");
+        bst.levelTraversal(root);
     }
 }
