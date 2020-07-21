@@ -65,6 +65,22 @@ public class BinaryTree {
         inorder(root.right);
     }
 
+    int getMaximumElement(BinaryTreeNode root) {
+        int max = Integer.MIN_VALUE;
+        if (root != null) {
+            int leftMax = getMaximumElement(root.left);
+            int rightMax = getMaximumElement(root.right);
+
+            max = Math.max(leftMax, rightMax);
+
+            if (root.data > max) {
+                max = root.data;
+            }
+
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
 
@@ -82,5 +98,6 @@ public class BinaryTree {
         System.out.println("\nBinary Tree after insertion: ");
         binaryTree.inorder(root);
 
+        System.out.println("\nMax element in a binary tree: " + binaryTree.getMaximumElement(root));
     }
 }
