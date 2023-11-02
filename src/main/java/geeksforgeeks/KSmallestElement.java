@@ -3,7 +3,7 @@ package geeksforgeeks;
 import java.util.Scanner;
 
 /*
-Problem: https://practice.geeksforgeeks.org/problems/kth-smallest-element/0
+Problem:https://practice.geeksforgeeks.org/problems/kth-smallest-element/0
  */
 public class KSmallestElement {
 
